@@ -1,0 +1,18 @@
+load ./d_eqn.so
+load ./f_probe.so
+
+parameter a=3
+parameter b={foo+1}
+
+spice
+
+v1 0 1 sin amplitude=1
+
+.verilog
+
+Eqn #(.more(1-probe("ev(v1)"))) Eq1();
+Eqn #(.thing(a)) Eq2();
+
+print tran ev(v1) more(Eq1) thing(Eq2)
+tran 0 1 .1 trace=n
+end

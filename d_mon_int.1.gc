@@ -1,0 +1,17 @@
+load ./d_mon_int.so
+load ./f_probe.so
+
+parameter a=1
+
+spice
+
+v1 0 1 sin amplitude=1
+
+.verilog
+
+integrate #(.int(a-probe("ev(v1)"))) M1();
+// integrate #(probe("ev(v1)")) M2(); bug?
+
+print tran ev(v1) integrand(M1) integral(M1)
+tran 0 1 .1 trace=n
+end

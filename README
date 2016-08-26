@@ -1,0 +1,38 @@
+CONTENTS
+
+functions and components alleviating online measurement and computation.
+
+- f_probe.cc, access probes from parameter expressions
+- d_eqn.cc, evaluate expressions during simulation
+- d_mon_int.cc, integrate an expression during simulation
+
+USAGE
+
+attach f_probe.so (and others) using -a or the load/attach command. then "random functions"
+are available.
+
+BUILD
+
+type
+
+$ make
+$ make install
+
+to build for other flavors, e.g. gnucap-uf, type
+
+$ make SUFFIX=-uf
+
+TODO
+
+- compile with c++<11
+
+LIMITATIONS
+
+- syntax is a bit weird.
+- need gnucap with "-enabled m_expression_in.cc
+- inefficient implementation (parsing all the time...)
+
+BUGS
+
+some devices bypass evaluation unless probes attached. probing these will
+likely not work as intended.
