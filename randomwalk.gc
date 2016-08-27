@@ -1,0 +1,15 @@
+
+load ../gnucap-random/f_random.so
+load ./d_mon_int.so
+load ./f_probe.so
+
+param a=agauss(0,1,6)
+
+verilog
+
+integrate #(.int(a)) M1();
+
+print tran integrand(M1) integral(M1)
+tran 0 10 .001 trace=n > walk.out
+end
+
