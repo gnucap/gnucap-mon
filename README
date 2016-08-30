@@ -8,8 +8,8 @@ functions and components alleviating online measurement and computation.
 
 USAGE
 
-attach f_probe.so (and others) using -a or the load/attach command. then "random functions"
-are available.
+attach f_probe.so (and others) using -a or the load/attach command. then
+these monitors are available.
 
 BUILD
 
