@@ -6,7 +6,7 @@ ifneq ($(GNUCAP_CONF),)
     CXX = $(shell $(GNUCAP_CONF) --cxx)
     GNUCAP_CPPFLAGS = $(shell $(GNUCAP_CONF) --cppflags) -DADD_VERSION -DPIC
     GNUCAP_CXXFLAGS = $(shell $(GNUCAP_CONF) --cxxflags)
-	 GNUCAP_LIBDIR   = $(shell $(GNUCAP_CONF) --libdir)
+    GNUCAP_LIBDIR   = $(shell $(GNUCAP_CONF) --pkglibdir)
 else
     $(info no gnucap-conf, this will not work)
 endif
@@ -22,7 +22,7 @@ all: $(INSTALL_FILES)
 	$(CXX) $(CXXFLAGS) $(GNUCAP_CXXFLAGS) $(CPPFLAGS) $(GNUCAP_CPPFLAGS) -o $@ $< $(LIBS)
 
 install : $(INSTALL_FILES)
-	install -d $(GNUCAP_LIBDIR)
+	-install -d $(GNUCAP_LIBDIR)
 	install $(INSTALL_FILES) $(GNUCAP_LIBDIR)
 
 uninstall :
